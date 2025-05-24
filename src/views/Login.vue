@@ -20,6 +20,7 @@ export default {
                 this.loading = true;
                 await login(this.user.email, this.user.password);
                 this.loading = false;
+                this.$router.push('/mi-perfil');
             } catch (error) {
                 // TODO:
             }

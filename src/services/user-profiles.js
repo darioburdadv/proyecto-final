@@ -1,7 +1,19 @@
 import supabase from "./supabase";
 
-export async function createUserProfile(data) {
+/**
+*
+* @param {{id: string, email: string}} data
+*/
 
+export async function createUserProfile(data) {
+    const { error } = await supabase
+    .from('user_profiles')
+    .insert(data);
+
+    if(error) {
+        console.error('[user-profiles.js createUserProfile] Error al crear el perfil del usuario: ', error);
+        throw error;
+    }
 }
 
 export async function updateUserProfile(id, data) {

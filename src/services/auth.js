@@ -74,6 +74,15 @@ export async function register(email, password) {
         throw error;
     }
 
+    try {
+        await createUserProfile({
+            id: data.user.id,
+            email,
+        })
+    } catch (error) {
+        
+    }
+
     user = {
         ...user,
         id: data.user.id,
